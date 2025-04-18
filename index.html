@@ -1,386 +1,1049 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web | Nabil
-    </title>
-    <style>
-        /* Reset CSS dasar */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Web Portfolio | Wan Nabil Muzakhy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Helvetica&family=Times New Roman&family=Courier New&family=Garamond&family=Roboto&family=Montserrat&family=Lora&family=Raleway&family=Poppins&family=Oswald&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-        /* Styling untuk navbar */
-        nav {
-            background-color: #0048ff;
-            overflow: hidden;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      scroll-behavior: smooth;
+      background-color: #f5f5f5;
+    }
+    
+    nav {
+      background-color: #0048ff;
+      overflow: hidden; 
+      position: sticky; 
+      top: 0; 
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    nav ul {
+      display: flex; 
+      list-style: none; 
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    nav ul li a {
+      display: block; 
+      color: white; 
+      text-align: center;
+      padding: 16px 24px; 
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    nav ul li a:hover { 
+      background-color: #008cff; 
+      transform: translateY(-2px);
+    }
+    
+    nav ul li a.active { 
+      background-color: #050047; 
+      font-weight: bold;
+    }
 
-        nav ul {
-            display: flex;
-            list-style-type: none;
-            justify-content: center;
-        }
+    section { 
+      padding: 80px 10%; 
+      min-height: 100vh; 
+    }
+    
+    section h2 {
+      margin-bottom: 40px; 
+      text-align: center;
+      font-size: 2.5rem; 
+      color: #333;
+      position: relative;
+    }
+    
+    section h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: #0048ff;
+      margin: 15px auto;
+      border-radius: 2px;
+    }
 
-        nav ul li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 16px 24px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+    #about { 
+      background-color: #f9f9f9; 
+    }
+    
+    .sliding-text {
+      text-align: center; 
+      background-color: #ffffff;
+      color: #050047; 
+      font-size: 2em; 
+      font-weight: 700;
+      padding: 15px 0;
+      animation: slideIn 3s infinite;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .about-content {
+      display: flex; 
+      align-items: center; 
+      gap: 40px;
+    }
+    
+    .about-img { 
+      flex: 1; 
+      text-align: center; 
+    }
+    
+    .about-img img {
+      width: 300px; 
+      height: 300px; 
+      border-radius: 50%;
+      object-fit: cover; 
+      border: 5px solid #5500ff;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .about-img img:hover {
+      transform: scale(1.05);
+    }
+    
+    .about-text { 
+      flex: 2; 
+    }
+    
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    
+    .about-text p {
+      margin-bottom: 15px;
+      line-height: 1.6;
+      color: #555;
+    }
 
-        nav ul li a:hover {
-            background-color: #008cff;
-        }
+    #project { 
+      background-color: #fff; 
+    }
 
-        nav ul li a.active {
-            background-color: #050047;
-        }
+    /* All Projects Container */
+    .projects-container {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
 
-        /* Styling untuk sections */
-        section {
-            padding: 60px 10%;
-            min-height: 100vh;
-        }
+    /* Project Category Section */
+    .project-category {
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #f0f0f0;
+    }
 
-        section h2 {
-            margin-bottom: 30px;
-            text-align: center;
-            font-size: 2.5rem;
-            color: #333;
-        }
+    .project-category:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
 
-        /* Styling untuk About section */
-        #about {
-            background-color: #f9f9f9;
-        }
+    .category-title {
+      font-size: 1.8rem;
+      color: #0048ff;
+      margin-bottom: 25px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #0048ff;
+      display: inline-block;
+    }
 
-        .sliding-text {
-            text-align: center;
-            background-color: #ffffff;
-            color: #050047;
-            font-size: 2em;
-            font-weight: 700;
-            margin-top: 0px;
-            animation: slideIn 3s infinite;
-        }
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
+    .project-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
 
-        .about-img {
-            flex: 1;
-            text-align: center;
-        }
+    .project-item {
+      background: #f9f9f9;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
 
-        .about-text {
-            flex: 2;
-        }
+    .project-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
 
-        .about-img img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #5500ff;
-        }
+    .item-title {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
 
-        /* Styling untuk Project section */
-        #project {
-            background-color: #fff;
-        }
+    .item-content {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
+    .video-preview {
+      height: 150px;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+    }
 
-        .project-card {
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
+    .video-preview video,
+    .video-preview iframe {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: none;
+    }
 
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
+    .image-preview {
+      height: 150px;
+      background: #f0f0f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
 
-        .project-img {
-            height: 200px;
-            overflow: hidden;
-        }
+    .image-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-        .project-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .audio-preview {
+      width: 100%;
+      background: #f0f0f0;
+      border-radius: 8px;
+      padding: 10px;
+    }
 
-        .project-info {
-            padding: 20px;
-        }
+    .animation-preview {
+      height: 150px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+    }
 
-        .project-info h3 {
-            margin-bottom: 10px;
-            color: #333;
-        }
-        a {
-            color: black; /
-            text-decoration: none; /
-        }
+    .font-preview {
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+      font-size: 1.2rem;
+    }
 
-        /* Styling untuk Contact section */
-        #contact {
-            background-color: #f9f9f9;
-        }
+    .pdf-preview {
+      height: 150px;
+      background: #f0f0f0;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-        .contact-container {
-            display: flex;
-            gap: 40px;
-        }
+    .pdf-preview:hover {
+      background: #e0e0e0;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
 
-        .contact-info {
-            flex: 1;
-        }
+    .pdf-icon {
+      font-size: 3rem;
+      color: #e74c3c;
+      margin-bottom: 10px;
+    }
 
-        .contact-form {
-            flex: 2;
-        }
+    /* Modal PDF Styles */
+    .pdf-modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+    }
 
-        .contact-info h3, .contact-form h3 {
-            margin-bottom: 20px;
-            color: #333;
-        }
+    .pdf-modal-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 800px;
+      height: 90vh;
+      margin-top: 5vh;
+    }
 
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
+    .pdf-modal iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
 
-        .contact-item i {
-            margin-right: 10px;
-            color: #4CAF50;
-            font-size: 20px;
-        }
+    .close-pdf {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-        form {
-            display: grid;
-            gap: 20px;
-        }
+    .close-pdf:hover {
+      color: #e74c3c;
+    }
 
-        form input, form textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
+    .video-preview iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+    #contact { 
+      background-color: #f9f9f9; 
+    }
+    
+    .contact-container { 
+      display: flex; 
+      gap: 40px; 
+    }
+    
+    .contact-info { 
+      flex: 1; 
+    }
+    
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      color: #333;
+    }
+    
+    .contact-form { 
+      flex: 2; 
+    }
+    
+    .contact-form h3 {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      color: #333;
+    }
+    
+    .contact-item { 
+      display: flex; 
+      align-items: center; 
+      margin-bottom: 20px; 
+      padding: 10px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover {
+      background: rgba(0,72,255,0.05);
+      transform: translateX(5px);
+    }
+    
+    .contact-item i {
+      margin-right: 15px; 
+      color: #0048ff; 
+      font-size: 24px;
+      width: 30px;
+      text-align: center;
+    }
+    
+    .contact-item p {
+      color: #555;
+      font-size: 1.1rem;
+    }
 
-        form textarea {
-            resize: vertical;
-            min-height: 150px;
-        }
+    form {
+      display: grid; 
+      gap: 20px;
+    }
+    
+    form input, 
+    form textarea {
+      width: 100%; 
+      padding: 15px; 
+      border: 1px solid #ddd;
+      border-radius: 8px; 
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    form input:focus,
+    form textarea:focus {
+      border-color: #0048ff;
+      box-shadow: 0 0 0 3px rgba(0,72,255,0.1);
+      outline: none;
+    }
+    
+    form textarea {
+      resize: vertical; 
+      min-height: 150px;
+    }
+    
+    form button {
+      background-color: #3262ff; 
+      color: white; 
+      border: none;
+      padding: 15px 30px; 
+      border-radius: 8px; 
+      cursor: pointer;
+      font-size: 16px; 
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+      width: fit-content;
+      margin-top: 10px;
+    }
+    
+    form button:hover { 
+      background-color: #0048ff; 
+      transform: translateY(-2px);
+      box-shadow: 0 5px 10px rgba(0,72,255,0.2);
+    }
 
-        form button {
-            background-color: #3262ff;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
+    footer {
+      background-color: #0048ff; 
+      color: white;
+      text-align: center; 
+      padding: 25px;
+      font-size: 1.1rem;
+    }
+    
+    footer p {
+      margin: 0;
+    }
 
-        form button:hover {
-            background-color: #45a049;
-        }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #0048ff;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      z-index: 99;
+      opacity: 0;
+      visibility: hidden;
+    }
+    
+    .back-to-top.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background: #0038cc;
+      transform: translateY(-3px);
+    }
 
-        /* Styling untuk footer */
-        footer {
-            background-color: #0048ff;
-            color: rgb(0, 0, 0);
-            text-align: center;
-            padding: 20px;
-        }
-        @keyframes slideIn {
-            0% { transform: translateX(-100%); opacity: 0; }
-            50% { transform: translateX(0); opacity: 1; }
-            100% { transform: translateX(100%); opacity: 0; }
-        }
-        /* Responsiveness */
-        @media (max-width: 768px) {
-            .about-content, .contact-container {
-                flex-direction: column;
-            }
+    @keyframes slideIn {
+      0% { transform: translateX(-100%); opacity: 0; }
+      50% { transform: translateX(0); opacity: 1; }
+      100% { transform: translateX(100%); opacity: 0; }
+    }
 
-            .about-img {
-                margin-bottom: 30px;
-            }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.7; }
+      100% { transform: scale(1); opacity: 1; }
+    }
 
-            .project-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      section {
+        padding: 60px 5%;
+      }
+      
+      .about-content, 
+      .contact-container {
+        flex-direction: column;
+      }
+      
+      .about-img { 
+        margin-bottom: 30px; 
+      }
+      
+      .project-items {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      nav ul li a {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+      }
+      
+      section h2 {
+        font-size: 2rem;
+      }
+      
+      .about-img img {
+        width: 250px;
+        height: 250px;
+      }
+      
+      .category-title {
+        font-size: 1.5rem;
+      }
+      
+      .projects-container {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav>
-        <ul>
-            <li><a href="#about" class="active">About</a></li>
-            <li><a href="#project">Project</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <p class="sliding-text">Wan Nabil Muzakhy</p>
-    <marquee bgcolor="#0048ff"><font color="white"><font size= "20"><font weight="900"></font>Mahasiswa Teknik Informatika Universitas Riau</font></marquee>
+  <nav>
+    <ul>
+      <li><a href="#about" class="active">About</a></li>
+      <li><a href="#project">Project</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2>About Me</h2>
-        <div class="about-content">
-            <div class="about-img">
-                <img src="about.jpg " alt="Profile Picture">
+  <p class="sliding-text">Wan Nabil Muzakhy</p>
+  
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <div class="about-img">
+        <img src="about.jpg" alt="Profile Picture">
+      </div>
+      <div class="about-text">
+        <h3>Hallo, Saya Wan Nabil Muzakhy</h3>
+        <p>Saya merupakan mahasiswa prodi teknik informatika di Universitas Riau.</p>
+        <p>Saat ini saya sedang belajar membuat website dengan teknologi modern seperti HTML, CSS, dan JavaScript.</p>
+        <p>Saya juga mendalami UI/UX design untuk menciptakan pengalaman pengguna yang optimal dalam setiap proyek yang saya kerjakan.</p>
+        <p>Selain itu, saya tertarik dengan pengembangan aplikasi mobile dan web development secara umum.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="project">
+    <h2>My Projects</h2>
+    
+    <div class="projects-container">
+      <!-- Video Projects -->
+      <div class="project-category">
+        <h3 class="category-title">FORMAT VIDEO POPULER</h3>
+        <div class="project-items">
+          <div class="project-item">
+            <div class="item-title">1. Video MP4</div>
+            <div class="video-preview">
+              <video controls src="kny.mp4"></video>
             </div>
-            <div class="about-text">
-                <h3>Hallo, Saya Wan Nabil Muzakhy</h3>
-                <p>saya merupakan mahasiswa prodi teknik informatika di universitas riau.</p>
-                <p>saat ini saya sedang belajar membuat website.</p>
-                <p>Selain itu, saya juga belajar dalam membuat UI/UX design, sehingga dapat memahami kebutuhan pengguna dengan baik.</p>
+          </div>
+          <div class="project-item">
+            <div class="item-title">2. Video AVI</div>
+            <div class="video-preview">
+              <video controls src="kny.mp4"></video>
             </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">3. Video MOV</div>
+            <div class="video-preview">
+              <video controls src="kny.mp4"></video>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">4. Video MKV</div>
+            <div class="video-preview">
+              <video controls src="kny.mp4"></video>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">5. Video FLV</div>
+            <div class="video-preview">
+              <video controls src="kny.mp4"></video>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">6. Video MMV</div>
+            <div class="video-preview">
+              <video controls src="kny.mp4"></video>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">7. Video WEBM</div>
+            <div class="video-preview">
+              <video controls src="kny.mp4"></video>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">8. Video AVCHD</div>
+            <div class="video-preview">
+              <video controls src="kny.mp4"></video>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">9. Video HEVC</div>
+            <div class="video-preview">
+              <video controls src="kny.mp4"></video>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">10. Video 3GP</div>
+            <div class="video-preview">
+              <video controls src="kny.mp4"></video>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Project Section -->
-    <section id="project">
-        <h2>My Projects</h2>
-        <div class="project-grid">
-            <div class="project-card">
-                <div class="project-img">
-                    <img src="p1.jpg" alt="Project 1">
-                </div>
-                <div class="project-info">
-                    <h3>On Going</h3>
-                    <p>On Going.</p>
-                </div>
+      <!-- Image Projects -->
+      <div class="project-category">
+        <h3 class="category-title">FORMAT GAMBAR POPULER</h3>
+        <div class="project-items">
+          <div class="project-item">
+            <div class="item-title">1. Image JPG</div>
+            <div class="image-preview">
+              <img src="JPG.jpg" alt="Image JPG">
             </div>
-            <div class="project-card">
-                <div class="project-img">
-                    <img src="p2.jpg" alt="Project 2">
-                </div>
-                <div class="project-info">
-                    <h3>UTS</h3>
-                    <a href="MAKALAH.pdf" target="_blank">MAKALAH</a>
-                </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">2. Image PNG</div>
+            <div class="image-preview">
+              <img src="PNG.png" alt="Image PNG">
             </div>
-            <div class="project-card">
-                <div class="project-img">
-                    <img src="p3.jpg" alt="Project 3">
-                </div>
-                <div class="project-info">
-                    <h3>On Going</h3>
-                    <p>On Going.</p>
-                </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">3. Image GIF</div>
+            <div class="image-preview">
+              <img src="GIF.GIF" alt="Image GIF">
             </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">4. Image BMP</div>
+            <div class="image-preview">
+              <img src="BMP.BMP" alt="Image BMP">
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">5. Image TIFF</div>
+            <div class="image-preview">
+              <img src="JPG.jpg" alt="Image TIFF">
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">6. Image SVG</div>
+            <div class="image-preview">
+              <img src="JPG.jpg" alt="Image SVG">
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">7. Image WEBP</div>
+            <div class="image-preview">
+              <img src="WEBP.WEBP" alt="Image WEBP">
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">8. Image RAW</div>
+            <div class="image-preview">
+              <img src="JPG.jpg" alt="Image RAW">
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">9. Image PSD</div>
+            <div class="image-preview">
+              <img src="JPG.jpg" alt="Image PSD">
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">10. Image HEIF</div>
+            <div class="image-preview">
+              <img src="JPG.jpg" alt="Image HEIF">
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2>Contact Me</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Get In Touch</h3>
-                <div class="contact-item">
-                    <i>📍</i>
-                    <p>Riau, Indonesia</p>
-                </div>
-                <div class="contact-item">
-                    <i>📧</i>
-                    <p>nabilwnm@gmail.com</p>
-                </div>
-                <div class="contact-item">
-                    <i>📱</i>
-                    <p>+62 831-7905-1272</p>
-                </div>
-                <div class="contact-item">
-                    <i>🌐</i>
-                    <p>wannabil.my.id/p>
-                </div>
+      <!-- Audio Projects -->
+      <div class="project-category">
+        <h3 class="category-title">FORMAT AUDIO POPULER</h3>
+        <div class="project-items">
+          <div class="project-item">
+            <div class="item-title">1. Audio MP3</div>
+            <div class="audio-preview">
+              <audio controls src="musik.mp3"></audio>
             </div>
-            <div class="contact-form">
-                <h3>Send Message</h3>
-                <form>
-                    <input type="text" placeholder="Nama Anda" required>
-                    <input type="email" placeholder="Email Anda" required>
-                    <input type="text" placeholder="Subjek">
-                    <textarea placeholder="Pesan Anda" required></textarea>
-                    <button type="submit">Kirim Pesan</button>
-                </form>
+          </div>
+          <div class="project-item">
+            <div class="item-title">2. Audio WAV</div>
+            <div class="audio-preview">
+              <audio controls src="musik.mp3"></audio>
             </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">3. Audio AAC</div>
+            <div class="audio-preview">
+              <audio controls src="musik.mp3"></audio>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">4. Audio FLAC</div>
+            <div class="audio-preview">
+              <audio controls src="musik.mp3"></audio>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">5. Audio OGG</div>
+            <div class="audio-preview">
+              <audio controls src="musik.mp3"></audio>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">6. Audio WMA</div>
+            <div class="audio-preview">
+              <audio controls src="musik.mp3"></audio>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">7. Audio AIFF</div>
+            <div class="audio-preview">
+              <audio controls src="musik.mp3"></audio>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">8. Audio M4A</div>
+            <div class="audio-preview">
+              <audio controls src="musik.mp3"></audio>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">9. Audio AMR</div>
+            <div class="audio-preview">
+              <audio controls src="musik.mp3"></audio>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">10. Audio MIDI</div>
+            <div class="audio-preview">
+              <audio controls src="musik.mp3"></audio>
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Wan Nabil Muzakhy. Teknik Informatika.</p>
-    </footer>
+      <!-- Animation Projects -->
+      <div class="project-category">
+        <h3 class="category-title">ANIMASI POPULER</h3>
+        <div class="project-items">
+          <div class="project-item">
+            <div class="item-title">1. Toy Story (1995)</div>
+            <div class="video-preview">
+              <iframe src="https://www.youtube.com/embed/v-PjgYDrg70" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">2. Frozen (2013)</div>
+            <div class="video-preview">
+              <iframe src="https://www.youtube.com/embed/TbQm5doF_Uc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">3. Spider-Man: Into the Spider-Verse (2018)</div>
+            <div class="video-preview">
+              <iframe src="https://www.youtube.com/embed/g4Hbz2jLxvQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">4. Coco (2017)</div>
+            <div class="video-preview">
+              <iframe src="https://www.youtube.com/embed/xlnPHQ3TLX8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">5. Zootopia (2016)</div>
+            <div class="video-preview">
+              <iframe src="https://www.youtube.com/embed/jWM0ct-OLsM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">6. Demon Slayer (2019)</div>
+            <div class="video-preview">
+              <iframe src="https://www.youtube.com/embed/VQGCKyvzIM4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">7. Attack on Titan (2013)</div>
+            <div class="video-preview">
+              <iframe src="https://www.youtube.com/embed/MGRm4IzK1SQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">8. Your Name (2016)</div>
+            <div class="video-preview">
+              <iframe src="https://www.youtube.com/embed/xU47nhruN-Q" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">9. One-Punch Man (2015)</div>
+            <div class="video-preview">
+              <iframe src="https://www.youtube.com/embed/Poo5lqoWSGw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="item-title">10. Spirited Away (2001)</div>
+            <div class="video-preview">
+              <iframe src="https://www.youtube.com/embed/ByXuk9QqQkk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <script>
-        // JavaScript untuk navbar aktif
-        const navLinks = document.querySelectorAll('nav ul li a');
-        const sections = document.querySelectorAll('section');
+      <!-- Font Projects -->
+      <div class="project-category">
+        <h3 class="category-title">FORMAT FONT POPULER</h3>
+        <div class="project-items">
+          <div class="project-item">
+            <div class="item-title"></div>
+            <div class="font-preview" style="font-family: 'Helvetica', sans-serif;">Helvetica</div>
+          </div>
+          <div class="project-item">
+            <div class="item-title"></div>
+            <div class="font-preview" style="font-family: 'Times New Roman', cursive;">Times New Roman</div>
+          </div>
+          <div class="project-item">
+            <div class="item-title"></div>
+            <div class="font-preview" style="font-family:  'Courier New', Courier, monospace;">Courier New</div>
+          </div>
+          <div class="project-item">
+            <div class="item-title"></div>
+            <div class="font-preview" style="font-family: 'Garamond', sans-serif;">Garamond</div>
+          </div>
+          <div class="project-item">
+            <div class="item-title"></div>
+            <div class="font-preview" style="font-family: 'Roboto', serif;">Roboto</div>
+          </div>
+          <div class="project-item">
+            <div class="item-title"></div>
+            <div class="font-preview" style="font-family: 'Montserrat', cursive;">Montserrat</div>
+          </div>
+          <div class="project-item">
+            <div class="item-title"></div>
+            <div class="font-preview" style="font-family: 'Lora', sans-serif;">Lora</div>
+          </div>
+          <div class="project-item">
+            <div class="item-title"></div>
+            <div class="font-preview" style="font-family: 'Raleway', monospace;">Raleway</div>
+          </div>
+          <div class="project-item">
+            <div class="item-title"></div>
+            <div class="font-preview" style="font-family: 'Poppins', cursive;">Poppins</div>
+          </div>
+          <div class="project-item">
+            <div class="item-title"></div>
+            <div class="font-preview" style="font-family: 'Oswald', cursive;">Oswald</div>
+          </div>
+        </div>
+      </div>
 
-        window.addEventListener('scroll', () => {
-            let current = '';
+      <!-- PDF Projects -->
+      <div class="project-category">
+        <h3 class="category-title">MAKALAH UTS</h3>
+        <div class="project-items">
+          <div class="project-item">
+            <div class="item-title">1. Makalah PDF</div>
+            <div class="pdf-preview" onclick="openPdfModal('MAKALAH.pdf')">
+              <i class="fas fa-file-pdf pdf-icon"></i>
+              <p>Klik untuk melihat</p>
+            </div>
+          </div>
+          <!-- Tambahkan PDF lain jika diperlukan -->
+        </div>
+      </div>
+    </div>
+  </section>
 
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>Get In Touch</h3>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <p>Riau, Indonesia</p>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <p>nabilwnm@gmail.com</p>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <p>+62 831-7905-1272</p>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-globe"></i>
+          <p>wannabil.my.id</p>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-github"></i>
+          <p>github.com/wannabil</p>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <p>linkedin.com/in/wannabil</p>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Send Message</h3>
+        <form id="contactForm">
+          <input type="text" placeholder="Nama Anda" required>
+          <input type="email" placeholder="Email Anda" required>
+          <input type="text" placeholder="Subjek">
+          <textarea placeholder="Pesan Anda" required></textarea>
+          <button type="submit">
+            <i class="fas fa-paper-plane"></i> Kirim Pesan
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
-                    current = section.getAttribute('id');
-                }
-            });
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Wan Nabil Muzakhy. Teknik Informatika Universitas Riau.</p>
+  </footer>
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
+  <!-- Back to Top Button -->
+  <div class="back-to-top" id="backToTop">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- PDF Modal -->
+  <div id="pdfModal" class="pdf-modal">
+    <span class="close-pdf" onclick="closePdfModal()">&times;</span>
+    <iframe id="pdfViewer" class="pdf-modal-content"></iframe>
+  </div>
+
+  <script>
+    // Smooth scrolling for navigation
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').slice(1);
+        const targetSection = document.getElementById(targetId);
+        window.scrollTo({
+          top: targetSection.offsetTop - 20,
+          behavior: 'smooth'
         });
-
-        // Smooth scrolling untuk link navbar
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                const targetId = this.getAttribute('href').slice(1);
-                const targetSection = document.getElementById(targetId);
-
-                window.scrollTo({
-                    top: targetSection.offsetTop,
-                    behavior: 'smooth'
-                });
-            });
+        
+        // Update active nav link
+        document.querySelectorAll('nav ul li a').forEach(navLink => {
+          navLink.classList.remove('active');
         });
-    </script>
+        this.classList.add('active');
+      });
+    });
+
+    // Active nav link on scroll
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY + 100;
+      
+      document.querySelectorAll('section').forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          const id = section.getAttribute('id');
+          document.querySelectorAll('nav ul li a').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(id)) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+      
+      // Show/hide back to top button
+      const backToTop = document.getElementById('backToTop');
+      if (window.scrollY > 300) {
+        backToTop.classList.add('active');
+      } else {
+        backToTop.classList.remove('active');
+      }
+    });
+
+    // Back to top functionality
+    document.getElementById('backToTop').addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Form submission handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Terima kasih! Pesan Anda telah terkirim.');
+      this.reset();
+    });
+
+    // Fungsi untuk membuka modal PDF
+    function openPdfModal(pdfUrl) {
+      const modal = document.getElementById('pdfModal');
+      const pdfViewer = document.getElementById('pdfViewer');
+      
+      pdfViewer.src = pdfUrl;
+      modal.style.display = "block";
+      
+      // Tutup modal ketika mengklik di luar konten
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          closePdfModal();
+        }
+      }
+    }
+
+    // Fungsi untuk menutup modal PDF
+    function closePdfModal() {
+      const modal = document.getElementById('pdfModal');
+      const pdfViewer = document.getElementById('pdfViewer');
+      
+      pdfViewer.src = "";
+      modal.style.display = "none";
+    }
+  </script>
 </body>
 </html>
